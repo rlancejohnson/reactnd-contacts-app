@@ -19,7 +19,7 @@ export default class ListContacts extends Component {
 
     render() {
         const { query } = this.state;
-        const { contacts, onDeleteContact } = this.state;
+        const { contacts, onDeleteContact } = this.props;
 
         const showingContacts = query === '' ? contacts : contacts.filter((c) => (
             c.name.toLowerCase().includes(query.toLowerCase())
