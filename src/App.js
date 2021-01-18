@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import ListContacts from './ListContacts';
 import * as ContactsAPI from './utils/ContactsAPI';
 import CreateContact from './CreateContact.js';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import ContactDetails from './ContactDetails';
 
 export default class App extends Component {
   state = {
@@ -37,18 +38,31 @@ export default class App extends Component {
   }
 
   render() {
+    const { contacts } = this.state
+
     return (
       <div>
         <Route exact path='/' render={() => (
+          <div style={{width: '50%', margin: 'auto'}}>
+            <h1>Home</h1>
+            <Link to='/contacts'><button style={{padding: '2%'}}>Open Contacts App</button></Link>
+          </div>
+        )}/>
+
+        <Route exact path='/contacts' render={() => (
           <ListContacts 
-            contacts={this.state.contacts}
+            contacts={contacts}
             onDeleteContact={this.removeContact}/>
         )}/>
 
-        <Route path='/create' render={({ history }) => (
+        <Route exact path='/contacts/:handle' render={({ match }) => (
+          <ContactDetails contacts={contacts} match={match}/>
+        )}/>
+
+        <Route exact path='/create' render={({ history }) => (
           <CreateContact onCreateContact={(contact) => {
             this.createContact(contact)
-            history.push('/')
+            history.push('/contacts')
           }}/>
         )}/>
       </div>

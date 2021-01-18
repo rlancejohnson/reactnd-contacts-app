@@ -16,7 +16,7 @@ export default class CreateContact extends Component {
     render() {
         return (
             <div>
-                <Link className='close-create-contact' to='/'>Close</Link>
+                <Link className='close-create-contact' to='/contacts'>Close</Link>
                 <form className='create-contact-form'
                     onSubmit={this.handleSubmit}>
                         <ImageInput className='create-contact-avatar-input'

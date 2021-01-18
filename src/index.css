@@ -132,6 +132,8 @@ body, .app {
   padding: 20px;
   background: white;
   display: flex;
+  text-decoration: none;
+  color: black;
 }
 
 @media (min-width: 600px) {

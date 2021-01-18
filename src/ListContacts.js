@@ -53,9 +53,9 @@ export default class ListContacts extends Component {
                 <ol className='contact-list'>
                     {showingContacts.map(contact => (
                         <li key={contact.id} className='contact-list-item'>
-                            <div className='contact-avatar' style={{
-                                backgroundImage: `url(${contact.avatarURL})`
-                            }}></div>
+                            <Link to={`/contacts/${contact.handle}`} >
+                                <div className='contact-avatar' style={{backgroundImage: `url(${contact.avatarURL})`}}/>
+                            </Link>
                             <div className='contact-details'>
                                 <p>{contact.name}</p>
                                 <p>{contact.handle}</p>
